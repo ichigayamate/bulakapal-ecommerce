@@ -19,7 +19,13 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@components/*": ["./src/lib/components/*"],
+      "@scripts/*": ["./src/lib/scripts/*"],
+      "@interfaces/*": ["./src/lib/interfaces/*"],
+      "@actions/*": ["./src/app/actions/*"],
+      "@api/*": ["./src/app/api/*"],
+      "@models/*": ["./src/app/db/models/*"],
     }
   },
   "include": [
