@@ -7,6 +7,13 @@ export class BadRequestError extends Error {
   }
 }
 
+export class UnauthorizedError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = 'UnauthorizedError';
+  }
+}
+
 export class NotFoundError extends Error {
   constructor(message: string) {
     super(message);
@@ -30,8 +37,9 @@ export default function customError(err: Error | ZodError): Response {
   } else if (err instanceof ZodError) {
     statusCode = 400;
     message = err.issues.map((issue) => issue.message).join(", ");
-  }
-  else if (err instanceof NotFoundError) {
+  } else if (err instanceof UnauthorizedError) {
+    statusCode = 401;
+  } else if (err instanceof NotFoundError) {
     statusCode = 404;
   } else if (err instanceof ConflictError) {
     statusCode = 409;
