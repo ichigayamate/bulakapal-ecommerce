@@ -6,6 +6,7 @@ import Link from "next/link";
 import price from "@scripts/price-string";
 
 export default function ProductCard({data}: Readonly<{ data: Products }>) {
+  // TODO: Implement handleWishlist function
   const handleWishlist = async () => {
     return null
   }
