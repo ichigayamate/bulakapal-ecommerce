@@ -1,9 +1,19 @@
-import {sign} from "jsonwebtoken";
-const SECRET = process.env.JWT_SECRET as string;
+import {jwtVerify, SignJWT} from "jose";
 
-export function signToken(payload: {
+const SECRET = new TextEncoder().encode(process.env.JWT_SECRET);
+
+export type Payload = {
   _id: string;
   email: string;
-}): string {
-  return sign(payload, SECRET);
+}
+
+export async function signToken(payload: Payload): Promise<string> {
+  return new SignJWT(payload)
+    .setProtectedHeader({ alg: "HS256" })
+    .sign(SECRET);
+}
+
+export async function verifyToken(token: string) {
+  const { payload } = await jwtVerify(token, SECRET);
+  return payload as Payload;
 }
