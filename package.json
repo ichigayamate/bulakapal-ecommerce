@@ -14,12 +14,15 @@
     "@fortawesome/react-fontawesome": "^0.2.2",
     "bcrypt": "^5.1.1",
     "daisyui": "^4.12.23",
+    "jose": "^5.10.0",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.13.0",
     "next": "15.1.7",
     "nextjs-toploader": "^3.7.15",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-hot-toast": "^2.5.2",
+    "react-infinite-scroll-component": "^6.1.0",
     "zod": "^3.24.2"
   },
   "devDependencies": {
