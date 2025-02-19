@@ -5,6 +5,7 @@ import Navbar from "@components/root/navbar";
 
 import {config} from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
+import NextTopLoader from "nextjs-toploader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,6 +30,7 @@ export default function RootLayout({children}: Readonly<{ children: React.ReactN
     <body
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
+      <NextTopLoader color="#000000" zIndex={2000} />
       <Navbar />
       <main className="mt-32 p-2 max-w-[1280px] mx-auto ">
         {children}
