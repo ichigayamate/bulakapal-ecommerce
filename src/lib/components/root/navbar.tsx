@@ -10,25 +10,25 @@ type NavLinks = {
 }
 
 const navLinks: NavLinks[] = [{
-  name: "Category 1",
-  href: "/cat-1"
+  name: "Products",
+  href: "/products"
 }]
 
 export default function Navbar() {
   return <div
     className="navbar flex-col bg-white/80 backdrop-blur-2xl border-b border-b-neutral-300 fixed top-0 left-0 z-[1000] gap-2">
     <div className="flex items-center p-0 w-full">
-      <div className="navbar-start flex"/>
+      <div className="navbar-start flex" />
       <div className="navbar-center flex">
         <Link href="/" className="btn btn-ghost text-xl">Bulakapal</Link>
       </div>
-      <div className="navbar-end flex">
+      <div className="navbar-end flex gap-2">
         <button className="btn btn-ghost btn-circle">
           <FontAwesomeIcon icon={faUserAlt}/>
         </button>
-        <button className="btn btn-ghost btn-circle">
+        <Link href="/wishlist" title="Wishlist" className="btn btn-ghost btn-circle">
           <FontAwesomeIcon icon={faHeart}/>
-        </button>
+        </Link>
       </div>
     </div>
     <div className="p-0 w-full">
