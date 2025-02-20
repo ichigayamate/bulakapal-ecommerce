@@ -6,7 +6,6 @@ import Navbar from "@components/root/navbar";
 import {config} from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import NextTopLoader from "nextjs-toploader";
-import Footer from "@components/root/footer";
 import {Toaster} from "react-hot-toast";
 
 const geistSans = Geist({
