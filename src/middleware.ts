@@ -26,9 +26,11 @@ export async function middleware(request: NextRequest) {
         headers: requestHeaders
       }
     })
+  } else if (request.nextUrl.pathname === "/login" || request.nextUrl.pathname === "/register") {
+    if (auth) return Response.redirect(new URL("/", request.url));
   }
 }
 
 export const config = {
-  matcher: ["/api/wishlists/:path*", "/wishlist"]
+  matcher: ["/api/wishlists/:path*", "/wishlist", "/login", "/register"]
 }
