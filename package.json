@@ -12,8 +12,10 @@
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
+    "@headlessui/react": "^2.2.0",
     "bcrypt": "^5.1.1",
     "daisyui": "^4.12.23",
+    "dayjs": "^1.11.13",
     "jose": "^5.10.0",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.13.0",
@@ -21,6 +23,7 @@
     "nextjs-toploader": "^3.7.15",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-hook-form": "^7.54.2",
     "react-hot-toast": "^2.5.2",
     "react-infinite-scroll-component": "^6.1.0",
     "zod": "^3.24.2"
