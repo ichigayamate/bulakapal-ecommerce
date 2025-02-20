@@ -2,6 +2,7 @@ import customError, {UnauthorizedError} from "@scripts/api/custom-error";
 import UserModel from "@models/user";
 import {comparePassword} from "@scripts/api/bcrypt";
 import {signToken} from "@scripts/api/jwt";
+import {cookies} from "next/headers";
 
 export async function POST(request: Request) {
   try {
@@ -17,6 +18,9 @@ export async function POST(request: Request) {
       _id: user._id.toString(),
       email: user.email
     });
+
+    const cookieStore = await cookies();
+    cookieStore.set("authorization", `Bearer ${token}`);
 
     return Response.json({message: "Login success", token});
   } catch (e) {
