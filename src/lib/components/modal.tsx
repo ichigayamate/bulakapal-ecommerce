@@ -1,16 +1,16 @@
-import { Fragment, useState } from "react";
-import { Dialog, Transition } from "@headlessui/react";
+import {Fragment, useState} from "react";
+import {Description, Dialog, DialogPanel, DialogTitle, Transition, TransitionChild} from "@headlessui/react";
 
 export default function Modal({
-  isOpen,
-  onClose,
-  title,
-  description,
-  onConfirm,
-  confirmText = "Confirm",
-  cancelText = "Cancel",
-  confirmButtonClassName,
-}: Readonly<{
+                                isOpen,
+                                onClose,
+                                title,
+                                description,
+                                onConfirm,
+                                confirmText = "Confirm",
+                                cancelText = "Cancel",
+                                confirmButtonClassName,
+                              }: Readonly<{
   isOpen: boolean;
   onClose: () => void;
   title: string;
@@ -37,9 +37,9 @@ export default function Modal({
 
   return (
     <Transition show={isOpen} as={Fragment}>
-      <Dialog onClose={onClose} className="relative z-[6000]">
+      <Dialog onClose={!isLoading ? onClose : () => null} className="relative z-[6000]">
         {/* Backdrop with transition */}
-        <Transition.Child
+        <TransitionChild
           as={Fragment}
           enter="ease-out duration-150"
           enterFrom="opacity-0"
@@ -48,11 +48,11 @@ export default function Modal({
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
-        </Transition.Child>
+          <div className="fixed inset-0 bg-black/30" aria-hidden="true"/>
+        </TransitionChild>
 
         {/* Modal container with transition */}
-        <Transition.Child
+        <TransitionChild
           as={Fragment}
           enter="ease-out duration-150"
           enterFrom="opacity-0 scale-95"
@@ -62,11 +62,11 @@ export default function Modal({
           leaveTo="opacity-0 scale-95"
         >
           <div className="fixed inset-0 flex items-center justify-center p-2">
-            <Dialog.Panel className="w-full max-w-md rounded-lg bg-white/90 backdrop-blur-2xl p-6">
-              <Dialog.Title className="font-bold text-lg">{title}</Dialog.Title>
-              <Dialog.Description className="py-4">
+            <DialogPanel className="w-full max-w-md rounded-lg bg-white/90 backdrop-blur-2xl p-4">
+              <DialogTitle className="font-bold text-lg">{title}</DialogTitle>
+              <Description className="py-4">
                 {description}
-              </Dialog.Description>
+              </Description>
 
               {/* Modal actions */}
               <div className="flex justify-end space-x-4">
@@ -88,9 +88,9 @@ export default function Modal({
                   {confirmText}
                 </button>
               </div>
-            </Dialog.Panel>
+            </DialogPanel>
           </div>
-        </Transition.Child>
+        </TransitionChild>
       </Dialog>
     </Transition>
   );
