@@ -7,19 +7,26 @@ import {useState} from "react";
 import {Wishlist} from "@interfaces/wishlist";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTrashAlt} from "@fortawesome/free-solid-svg-icons";
+import {deleteWishlistItem} from "@actions/wishlist";
+import toast from "react-hot-toast";
 
 export default function WishlistCard({data}: Readonly<{ data: Wishlist }>) {
   const [deleteModal, setDeleteModal] = useState(false);
+
   const handleRemoveWishlist = async () => {
-    await new Promise(resolve => setTimeout(resolve, 3000));
+    await deleteWishlistItem(data._id).catch(() => {
+      toast.error("Failed to remove item from wishlist");
+    }).finally(() => {
+      setDeleteModal(false);
+    });
   }
 
   return <>
     <div className="relative">
       <Link href={`/products/${data.product.slug}`} className="absolute w-full h-full">
-
+        <p className="sr-only">{data.product.name}</p>
       </Link>
-      <figure className="relative min-w-full aspect-square">
+      <figure className="relative min-w-full aspect-square z-0">
         <img
           src={data.product.thumbnail}
           alt="Test"
