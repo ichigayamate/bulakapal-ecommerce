@@ -1,4 +1,5 @@
 import {ZodError} from "zod";
+import {JOSEError, JWSInvalid} from "jose/errors";
 
 export class BadRequestError extends Error {
   constructor(message: string) {
@@ -37,7 +38,7 @@ export default function customError(err: Error | ZodError): Response {
   } else if (err instanceof ZodError) {
     statusCode = 400;
     message = err.issues.map((issue) => issue.message).join(", ");
-  } else if (err instanceof UnauthorizedError) {
+  } else if (err instanceof UnauthorizedError || err instanceof JWSInvalid) {
     statusCode = 401;
   } else if (err instanceof NotFoundError) {
     statusCode = 404;
