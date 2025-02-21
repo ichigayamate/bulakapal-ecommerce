@@ -1,5 +1,5 @@
 import {ZodError} from "zod";
-import {JOSEError, JWSInvalid} from "jose/errors";
+import {JWSInvalid} from "jose/errors";
 
 export class BadRequestError extends Error {
   constructor(message: string) {

@@ -9,6 +9,7 @@ export default function Modal({
   onConfirm,
   confirmText = "Confirm",
   cancelText = "Cancel",
+  confirmButtonClassName,
 }: Readonly<{
   isOpen: boolean;
   onClose: () => void;
@@ -17,6 +18,7 @@ export default function Modal({
   onConfirm: () => Promise<void>;
   confirmText?: string;
   cancelText?: string;
+  confirmButtonClassName?: string;
 }>) {
   const [isLoading, setIsLoading] = useState(false);
 
@@ -76,7 +78,7 @@ export default function Modal({
                   {cancelText}
                 </button>
                 <button
-                  className="btn btn-neutral btn-sm"
+                  className={`btn btn-neutral btn-sm ${confirmButtonClassName ?? ""}`}
                   onClick={handleConfirm}
                   disabled={isLoading}
                 >

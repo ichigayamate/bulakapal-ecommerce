@@ -5,6 +5,7 @@ import price from "@scripts/price-string";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faHeart, faTruck} from "@fortawesome/free-solid-svg-icons";
 import dayjs from "dayjs";
+import WishlistButton from "@components/page/products/wishlist-button-productdetail";
 
 type ProductPageParams = {
   slug: string
@@ -14,7 +15,7 @@ export async function generateMetadata({params}: Readonly<{ params: Promise<Prod
   const slug = (await params).slug
   const data: Products & {
     code?: number
-  } = await fetch(`http://localhost:3000/api/products/${slug}`)
+  } = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products/${slug}`)
     .then(res => res.json());
   if (data.code === 404) return {}
   return {
@@ -29,7 +30,7 @@ export default async function ProductDetailPage({params}: Readonly<{
   const slug = (await params).slug
   const data: Products & {
     code?: number
-  } = await fetch(`http://localhost:3000/api/products/${slug}`)
+  } = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products/${slug}`)
     .then(res => res.json());
   if (data.code === 404) return notFound();
 
@@ -52,9 +53,7 @@ export default async function ProductDetailPage({params}: Readonly<{
             <div className="flex flex-col gap-4">
               <div className="flex gap-2">
                 <button className="btn btn-neutral flex-1">Buy now</button>
-                <button className="btn btn-outline" title="Add to Wishlist">
-                  <FontAwesomeIcon icon={faHeart} />
-                </button>
+                <WishlistButton id={data._id.toString()} />
               </div>
               <p className="font-light">Estimated delivery:<br/>
                 {dayjs().add(4, "days").format("DD MMM YYYY")} - {dayjs().add(8, "days").format("DD MMM YYYY")}</p>

@@ -5,7 +5,7 @@ import {PaginatedData} from "@interfaces/api";
 import Image from "next/image";
 
 export default async function Home() {
-  const allProducts = await fetch("http://localhost:3000/api/products?page=1&limit=5")
+  const allProducts = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products?page=1&limit=5`)
     .then(res => res.json())
     .then((data: PaginatedData<Products>) => data.data);
 

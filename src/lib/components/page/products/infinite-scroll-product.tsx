@@ -17,7 +17,7 @@ export default function AllProducts({initialData}: Readonly<{ initialData: Pagin
 
   const next = async () => {
     const nextPage = currentPage + 1;
-    const url = new URL("http://localhost:3000/api/products");
+    const url = new URL(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products`);
     url.searchParams.set("page", String(nextPage));
     url.searchParams.set("limit", String(initialData.limit));
 

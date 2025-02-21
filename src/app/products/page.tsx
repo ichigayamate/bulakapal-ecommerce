@@ -6,7 +6,7 @@ export const metadata: Metadata = {
 }
 
 export default async function Page() {
-  const initialData = await fetch("http://localhost:3000/api/products").then(res => res.json());
+  const initialData = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products`).then(res => res.json());
 
   return <AllProducts initialData={initialData} />
 }

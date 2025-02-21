@@ -15,7 +15,7 @@ export default function LoginPage() {
 
   const login = async (data: FieldValues) => {
     setLoading(true);
-    await fetch("http://localhost:3000/api/auth/login", {
+    await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

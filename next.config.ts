@@ -8,6 +8,10 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'pollinations.ai',
       },
+      {
+        protocol: 'https',
+        hostname: 'loremflickr.com',
+      }
     ],
   },
 };
