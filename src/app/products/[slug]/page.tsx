@@ -3,7 +3,7 @@ import {type Products} from "@interfaces/products";
 import {Metadata} from "next";
 import price from "@scripts/price-string";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faHeart, faTruck} from "@fortawesome/free-solid-svg-icons";
+import {faTruck} from "@fortawesome/free-solid-svg-icons";
 import dayjs from "dayjs";
 import WishlistButton from "@components/page/products/wishlist-button-productdetail";
 

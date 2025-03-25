@@ -3,6 +3,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faHeart, faUserAlt} from "@fortawesome/free-solid-svg-icons";
 import {checkAuth} from "@scripts/auth/check-auth";
 import LogoutButton from "@components/root/logout-button";
+import NavbarSearch from "@components/root/navbar-search";
 
 type NavLinks = {
   name: string;
@@ -45,12 +46,12 @@ export default async function Navbar() {
       <div className="navbar-start flex">
         <ul className="menu menu-vertical lg:menu-horizontal menu-md rounded-box p-0">
           {navLinks.map(({name, href}) => <li key={name}>
-            <Link href={href} className="active:!bg-neutral-300 !text-black">{name}</Link>
+            <Link href={href} className="active:!bg-neutral-300 !text-black" prefetch={false}>{name}</Link>
           </li>)}
         </ul>
       </div>
       <div className="navbar-end flex">
-        <input type="text" className="input input-bordered input-sm"/>
+        <NavbarSearch />
       </div>
     </div>
   </div>
